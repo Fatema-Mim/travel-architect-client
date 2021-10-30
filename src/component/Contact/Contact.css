@@ -1,0 +1,13 @@
+.text-size-one{
+    font-size: 60px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.text-size-two{
+    font-size: 45px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
