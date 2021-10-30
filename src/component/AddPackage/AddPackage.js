@@ -21,7 +21,7 @@ const AddPackage = () => {
         const newPackage = { title, location,price,image,discription}
         console.log(newPackage);
 
-        fetch('http://localhost:5000/package',{
+        fetch('https://shielded-scrubland-27688.herokuapp.com/package',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

@@ -17,7 +17,7 @@ const PackageOrder = () => {
     const history = useHistory();
     const redirect_uri = '/userOrder';
     useEffect(() => {
-        fetch('http://localhost:5000/package')
+        fetch('https://shielded-scrubland-27688.herokuapp.com/package')
             .then(res => res.json())
             .then(data => setOrderPackages(data));
     }, [])
@@ -34,7 +34,7 @@ const PackageOrder = () => {
         const newOrder = { name, email, title, price,address, status };
         console.log(newOrder);
 
-        fetch('http://localhost:5000/order', {
+        fetch('https://shielded-scrubland-27688.herokuapp.com/order', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

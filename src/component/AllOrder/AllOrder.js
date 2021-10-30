@@ -5,14 +5,14 @@ import { Button } from 'react-bootstrap';
 const AllOrder = () => {
     const [orders,setOrders] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('https://shielded-scrubland-27688.herokuapp.com/order')
             .then(res => res.json())
             .then(data => setOrders(data));
     }, []);
     const handleDeletOrder = id => {
         const proceed = window.confirm('Are you sure');
         if(proceed){
-            const url = `http://localhost:5000/order/${id}`;
+            const url = `https://shielded-scrubland-27688.herokuapp.com/order/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
