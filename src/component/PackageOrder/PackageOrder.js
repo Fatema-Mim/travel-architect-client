@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Col, Container, Form, Row, Button } from 'react-bootstrap';
+import { Col, Container, Form, Row, Button, Spinner } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
@@ -8,6 +8,8 @@ const PackageOrder = () => {
     const { packageId } = useParams();
     const { user } = useAuth();
     const [orderPackages, setOrderPackages] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     const nameRef = useRef();
     const emailRef = useRef();
     const titleRef = useRef();
@@ -19,7 +21,9 @@ const PackageOrder = () => {
     useEffect(() => {
         fetch('https://shielded-scrubland-27688.herokuapp.com/package')
             .then(res => res.json())
-            .then(data => setOrderPackages(data));
+            .then(data => setOrderPackages(data))
+            .finally(() => setIsLoading(false));
+
     }, [])
     const selectOrder = orderPackages.find(orderPackage => orderPackage._id == packageId)
     const handleUserOrder = e => {
@@ -52,6 +56,11 @@ const PackageOrder = () => {
         e.preventDefault();
 
 
+    }
+    if (isLoading) {
+        return <div className="text-center">
+            <Spinner animation="grow" variant="warning" />
+        </div>
     }
 
     return (

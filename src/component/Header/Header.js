@@ -10,7 +10,7 @@ const Header = () => {
             <Navbar bg="light" variant="light" sticky="top" collapseOnSelect expand="lg" >
                 <Container>
                     <Navbar.Brand as={Link} to="/home">
-                        Travel Architect
+                        <h1>Tra<span className="text-warning">vel Arch</span>itect</h1>
                     </Navbar.Brand>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
@@ -28,10 +28,10 @@ const Header = () => {
                             ''
                         }
                         <Navbar.Text>
-                            <h1>{user?.displayName}</h1>
+                            <h4>{user?.displayName}</h4>
                         </Navbar.Text>
                         {user?.email ?
-                            <Button onClick={logOut} variant="dark">LogOut </Button>:
+                            <Button onClick={logOut} variant="warning" className="ms-3">LogOut </Button>:
                             <Nav.Link as={Link} to="/login">Login</Nav.Link>
                         }
                     </Navbar.Collapse>

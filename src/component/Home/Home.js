@@ -5,6 +5,7 @@ import Packages from '../Packages/Packages';
 import UpTOEvent from '../UpToEvent/UpTOEvent';
 
 const Home = () => {
+  
     return (
         <div>
             <Banner></Banner>

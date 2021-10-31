@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Spinner, Table } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import useAuth from '../../Hooks/useAuth';
 
@@ -7,14 +7,18 @@ import useAuth from '../../Hooks/useAuth';
 const UserOrders = () => {
     const{user} = useAuth();
     const [orders, setOrders] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
-        fetch('http://localhost:5000/order')
+        fetch('https://shielded-scrubland-27688.herokuapp.com/order')
             .then(res => res.json())
             .then(data => {
                 const findOrder = data.filter(data => data.email == user?.email);
                 setOrders(findOrder);
+            })
+            .finally(() => setIsLoading(false));
 
-            });
+            
     }, []);
     const handleDeletOrder = id => {
         const proceed = window.confirm('Are you sure');
@@ -33,6 +37,11 @@ const UserOrders = () => {
                 });
         }
     }  
+    if(isLoading){
+        return <div className="text-center">
+            <Spinner animation="grow" variant="warning" />
+        </div>
+    }
     return (
         <Container className="mt-5 mb-5">
             <h1 className="text-center mb-5"> My <span className="text-warning"> Orders</span> </h1>
@@ -41,6 +50,7 @@ const UserOrders = () => {
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Address</th>
                         <th>Package Title</th>
                         <th>Price</th>
                         <th>Action</th>
@@ -52,6 +62,7 @@ const UserOrders = () => {
                         orders.map(order => <tr>
                             <td>{order?.name}</td>
                             <td>{order?.email}</td>
+                            <td>{order?.address}</td>
                             <td>{order?.title}</td>
                             <td>{order?.price}</td>
                             <td>

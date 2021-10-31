@@ -12,8 +12,8 @@ const Packages = () => {
     },[])
     return (
         <Container className="mt-5 mb-5">
-                <h1 className="text-center mt-5 mb-5 ">
-                    Package
+                <h1 className="text-center mt-5 mb-5 text-size-one ">
+                Pac<span className="text-warning">kage</span>
                 </h1>
                 <Row xs={1} md={2} lg={4} className="g-4">
 

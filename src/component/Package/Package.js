@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom';
 
 const Package = (props) => {
     const {_id,title, price, location,image,discription} = props.allPackage;
+
     return (
         <Col>
-            <Card className="custom-card">
+            <Card>
                 <Card.Img variant="top" src={image} className="img-border-set" />
-                <Card.Body className="text-center">
-                    <Card.Title className="supports-Name ">
-                        <h2 className="card-title">{title}</h2>
+                <Card.Body className="pt-3 pb-3">
+                    <Card.Title>
+                        <h2>{title}</h2>
                     </Card.Title>
                     <Card.Text>
-                        <small>Price : {price}</small>
-                        <small>Location : {location}</small>
-                        <p className="card-text p-3">{discription}</p>
+                        <h3 className="mt-3 mb-3">Price : <span className="text-warning">${price}</span> </h3>
+                        <h4>Location : <span className="text-warning">{location}</span> </h4>
+                        <p className="mt-3 mb-3">{discription}</p>
                         <Link to={`/packages/${_id}`} style={{ textDecoration: 'none' }} >
                             <div className="d-grid gap-2">
                                 <button className="btn btn-warning" type="button">Book Now</button>
