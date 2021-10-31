@@ -22,7 +22,7 @@ const Login = () => {
     }
     return (
         <div className="text-center mt-5 mb-5 p-5" >
-            <h1 className="p-5" >Pls login</h1>
+            <h1 className="p-5" >Please Login</h1>
             <Button onClick={handleSignIn} variant="warning">Google Login</Button>
         </div>
     );

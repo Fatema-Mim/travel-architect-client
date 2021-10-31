@@ -13,10 +13,10 @@ const Contact = () => {
             backgroundRepeat: 'no-repeat',
 
          }} className="text-center">
-            <Container className="p-5">
+            <Container className="p-5 text-center">
                 <div className="p-5">
                     <h1 className="text-size-one text-light"><span className="text-warning"> The World </span>Calling you</h1>
-                    <h1 className="text-size-two text-light "> <span className="text-warning" >Call Now :</span> +1234567998</h1>
+                    <h1 className="text-size-two text-light "> <span className="text-warning" >Call Now :</span>+223344</h1>
 
                     
                 </div>
