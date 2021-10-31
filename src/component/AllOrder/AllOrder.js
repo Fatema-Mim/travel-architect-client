@@ -12,9 +12,9 @@ const AllOrder = () => {
             .then(data => setOrders(data))
             .finally(() => setIsLoading(false));
 
-    }, []);
+    }, [isLoading]);
     const handleDeletOrder = id => {
-        const proceed = window.confirm('Are you sure');
+        const proceed = window.confirm('Are you sure?');
         if(proceed){
             const url = `https://shielded-scrubland-27688.herokuapp.com/order/${id}`;
             fetch(url, {
@@ -29,7 +29,24 @@ const AllOrder = () => {
                     }
                 });
         }
+    };
+    function handleConfirm(id) {
+        const proceed = window.confirm('Are you sure, you want to Confirm?');
+        if (proceed) {
+            const url = `https://shielded-scrubland-27688.herokuapp.com/confirm/${id}`
+            fetch(url, {
+                method: 'PUT',
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.modifiedCount === 1) {
+                        setIsLoading(!isLoading);
+                    }
+                });
+        }
+
     }
+    
     if (isLoading) {
         return <div className="text-center">
             <Spinner animation="grow" variant="warning" />
@@ -47,11 +64,13 @@ const AllOrder = () => {
                         <th>Address</th>
                         <th>Package Title</th>
                         <th>Price</th>
+                        <th>Status</th>
                         <th>Action</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                    
 
                     {
                         orders.map(order => <tr>
@@ -60,8 +79,9 @@ const AllOrder = () => {
                             <td>{order.address}</td>
                             <td>{order.title}</td>
                             <td>{order.price}</td>
+                            <td>{order.status}</td>
                             <td>
-                                <Button variant="success">Pending</Button>
+                                <Button variant="warning" onClick={() => handleConfirm(order._id)}>Confirm</Button>
                             </td>
                             <td>
                                 <Button variant="danger" onClick={() => handleDeletOrder(order._id)}>Delete</Button>

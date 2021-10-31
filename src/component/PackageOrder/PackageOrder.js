@@ -80,7 +80,7 @@ const PackageOrder = () => {
                             Client Email:
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control ref={emailRef} type="email" value={user?.email || ''} />
+                            <Form.Control ref={emailRef} type="email" value={user?.email} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3">
@@ -96,7 +96,7 @@ const PackageOrder = () => {
                             Package Title:
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control ref={titleRef} type="text" value={selectOrder?.title || ''} />
+                            <Form.Control ref={titleRef} type="text" value={selectOrder?.title} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3">
@@ -104,7 +104,7 @@ const PackageOrder = () => {
                             Package Price:
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control ref={priceRef} type="number" value={selectOrder?.price || ''} />
+                            <Form.Control ref={priceRef} type="number" value={selectOrder?.price} />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3">
@@ -112,7 +112,7 @@ const PackageOrder = () => {
 
                         </Form.Label>
                         <Col sm={10}>
-                            <Form.Control ref={statusRef} type="number" value="1" hidden />
+                            <Form.Control ref={statusRef} type="text" value="pending" hidden />
                         </Col>
                     </Form.Group>
                     <Form.Group as={Row} className="mb-3">

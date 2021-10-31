@@ -23,7 +23,7 @@ const UserOrders = () => {
     const handleDeletOrder = id => {
         const proceed = window.confirm('Are you sure');
         if (proceed) {
-            const url = `https://shielded-scrubland-27688.herokuapp.com/order/${id}`;
+            const url = `https://shielded-scrubland-27688.herokuapp.com/${id}`;
             fetch(url, {
                 method: 'DELETE',
             })
@@ -53,6 +53,7 @@ const UserOrders = () => {
                         <th>Address</th>
                         <th>Package Title</th>
                         <th>Price</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -65,6 +66,7 @@ const UserOrders = () => {
                             <td>{order?.address}</td>
                             <td>{order?.title}</td>
                             <td>{order?.price}</td>
+                            <td>{order?.status}</td>
                             <td>
                                 <Button variant="danger" onClick={() => handleDeletOrder(order._id)}>Delete</Button>
                             </td>
